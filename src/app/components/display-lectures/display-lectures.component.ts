@@ -198,7 +198,7 @@ export class DisplayLecturesComponent implements OnInit {
           },400)
 
         },300)
-      },1500);
+      },3000);
 
 }else if (!(this.nextlevelId == 0) && !(this.nextLectureId == 0)) {
 
@@ -233,7 +233,7 @@ export class DisplayLecturesComponent implements OnInit {
           },400)
 
         },300)
-      },1500);
+      },3000);
 
 }
 
