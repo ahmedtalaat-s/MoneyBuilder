@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
-  imgs=['../../../assets/images/level1.PNG','../../../assets/images/level2.PNG','../../../assets/images/level3.PNG']
+  imgs=['assets/images/level1.PNG','assets/images/level2.PNG','assets/images/level3.PNG']
   levels:Level_get[]=[]
   userName ='';
   userEmail = '';
