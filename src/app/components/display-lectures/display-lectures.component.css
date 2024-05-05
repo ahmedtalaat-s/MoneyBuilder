@@ -1,0 +1,171 @@
+
+
+
+.main{
+  background-color: var(--navyBlue);
+  font-family: 'Nunito',sans-serif;
+}
+
+.main h2{
+  color:var(--bluemain) ;
+  font-size: 70px;
+  text-shadow: 2px 1px white;
+  margin-bottom: 10px;
+}
+.custom-shape-divider-top-1714675462 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--navyBlue);
+}
+
+.custom-shape-divider-top-1714675462 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 153px;
+}
+
+.custom-shape-divider-top-1714675462 .shape-fill {
+  fill: var(--bluemain);
+}
+
+#scene {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+#rocket {
+  position: absolute;
+  top: 30% !important;
+  left: -4% !important;
+  z-index: -1;
+}
+
+
+
+#star {
+  position: absolute;
+  top: 0% !important;
+  left: 90% !important;
+  z-index: -2;
+}
+
+#planet {
+  position: absolute;
+  top: 110% !important;
+  left: 50% !important;
+  z-index: -1;
+}
+
+.video-container {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+  z-index: 5;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  /* max-width: 800px; */
+  /* Adjust based on your design */
+  height: auto;
+}
+
+.container p{
+  font-size: 30px;
+  color:white;
+  margin: 50px 0;
+}
+.container p strong{
+  font-size: 50px;
+  color: var(--bluemain);
+}
+.container p span{
+  margin: 0 50px;
+}
+
+.btn{
+  background-color: var(--bluemain);
+  border: none;
+}
+.btn:hover{
+  background-color: #2db7ee;
+}
+
+/* Quiz Container */
+.quiz-container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 70px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--navyBlue);
+}
+
+/* Questions */
+.quiz-container h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Options */
+.quiz-container  label {
+  display: inline;
+  margin-bottom: 5px;
+  margin-right: 20px;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.quiz-container button {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+  border: none;
+}
+
+/* .quiz-container button:hover {
+  background-color: #0056b3;
+} */
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.question {
+  margin-bottom: 1rem;
+}
+
+.question h2 {
+  font-size: 1.2rem;
+}
+
+.modal{
+  font-family: 'Nunito',sans-serif;
+}
+.modal-title{
+  color: var(--navyBlue);
+}
+
+.modal .result-content{
+  color: var(--navyBlue);
+}
+
+.startquizbtn {
+      width: 200px;
+        font-weight: 700;
+        font-size: 25px;
+        height: 60px;
+}

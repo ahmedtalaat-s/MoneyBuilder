@@ -1,0 +1,395 @@
+<!-- header section starts -->
+
+<header class="header">
+
+  <a href="#" class="logo"> <img src="assets/images/logo-removebg-preview.png" alt=""> Money Builder</a>
+
+  <nav class="navbar">
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#education">education</a>
+    <a href="#teacher">teacher</a>
+    <a href="#gallery">gallery</a>
+    <a href="#contact">contact</a>
+  </nav>
+
+  <div class="icons">
+    <div (click)="checkLogin()" id="login-btn">
+      <div class="iconBackground">
+        <div  class="fas fa-user icoon" ></div>
+      </div>
+    </div>
+
+  </div>
+
+  <form action="" class="login-form" [class.active]="loginform">
+    <h3>User Details</h3>
+    <p class="text-start"><span>Username :</span>{{userName}}</p>
+    <p class="text-start"><span>Email :</span>{{userEmail}}</p>
+    <input type="submit" (click)="logOut()" value="log out" class="btn">
+  </form>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts -->
+
+<section class="home" id="home">
+
+
+
+  <div   class="content" >
+    <h3 data-aos="fade-up" data-aos-duration="1500">welcome to <span>Money builder</span></h3>
+    <p class="lead" data-aos="fade-up" data-aos-duration="2000">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur minus aut, in maiores quidem </p>
+    <a href="#" class="btn" data-aos="fade-up" data-aos-duration="2500">learn more</a>
+  </div>
+
+  <div class="image">
+
+  </div>
+
+  <div class="custom-shape-divider-bottom-1684324473">
+    <img class="w-100" src="assets/images/home-1_section_03.png" alt="">
+  </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- about us section starts -->
+
+<section class="about position-relative" id="about">
+
+  <h1 class="heading"> <span>about</span> us</h1>
+
+  <div class="row row-cols-1 row-cols-md-2 ">
+
+  <div class="col" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="image w-75 ">
+        <img class=" d-block" src="assets/images/about3 (1).jpg" alt="">
+      </div>
+  </div>
+   <div class="col">
+    <div class="content">
+      <h3 data-aos="fade-left" data-aos-duration="1000">Exploring, Growing And Thriving Together</h3>
+      <div class="d-flex align-items-center" data-aos="fade-left" data-aos-duration="1500">
+        <img class="aicon" src="assets/images/output-onlinepngtools.png" alt="">
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam amet nam distinctio sunt facilis, quia
+          </p>
+      </div>
+      <div class="d-flex align-items-center" data-aos="fade-left" data-aos-duration="1500">
+        <img class="aicon" src="assets/images/growing.png" alt="">
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam amet nam distinctio sunt facilis, quia
+          </p>
+      </div>
+      <div class="d-flex align-items-center" data-aos="fade-left" data-aos-duration="1500">
+        <img class="aicon" src="assets/images/thrive.png" alt="">
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam amet nam distinctio sunt facilis, quia
+          </p>
+      </div>
+
+      <a  class="btn" data-aos="fade-left" data-aos-duration="2000">read more</a>
+    </div>
+   </div>
+
+
+  </div>
+
+
+</section>
+
+<!-- about us section ends -->
+
+<!-- education section start -->
+
+<section class="education position-relative" id="education">
+
+<div id="divider" class="custom-shape-divider-bottom-1684324473">
+  <img class="w-100" src="assets/images/home-1_section_04.png" alt="">
+</div>
+
+  <h1 class="heading">our <span> education</span></h1>
+  <button *ngIf="isAdmin" id="addlevel_btn" class="btn" (click)="toAddComponent()">Add level</button>
+
+  <div dir="rtl" class="box-container d-flex w-100 justify-content-center flex-wrap">
+
+   <div *ngFor="let level of levels ;let i=index;" class="w-25 m-5">
+    <div id="1" level="1" [class.opened]="(currentlevelId >= (level.id??1))"
+      class="lesson w-100  rounded-4 overflow-hidden  position-relative">
+      <img class="lessonImg" src="{{imgs[i]}}" alt="">
+      <div *ngIf="!(currentlevelId >= (level.id??1)) || !islogin" id="12" (click)="shake($event)" class="layer d-flex justify-content-center align-items-center">
+        <img src="assets/images/padlock.png" alt="">
+      </div>
+      <button *ngIf="(currentlevelId >= (level.id??1))&& islogin" (click)="navigateToLectures(level.id)" class="btn lessonbtn">إلي الدروس</button>
+    </div>
+    <h3>{{level.title}}</h3>
+   </div>
+  </div>
+
+</section>
+
+<!-- education section ends -->
+
+<!-- teacher section starts -->
+
+<section class="teacher" id="teacher">
+
+  <h1 class="heading">our <span> teacher</span></h1>
+
+ <div class="row row-cols-1 row-cols-md-3" data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-duration="600"
+     data-aos-offset="0">
+
+  <div class="col">
+    <div class="cardimg d-flex justify-content-center">
+      <img class=" rounded-circle" src="assets/images/teacher_01-400x400.jpg" alt="">
+    </div>
+    <div class="content d-flex flex-column">
+      <h5 class="text-center m-2">Dawson Timms</h5>
+      <span class="text-center">SENIOR ANALYST</span>
+    </div>
+  </div>
+  <div class="col">
+    <div class="cardimg d-flex justify-content-center">
+      <img class=" rounded-circle" src="assets/images/teacher_02-400x400.jpg" alt="">
+    </div>
+    <div class="content d-flex flex-column">
+      <h5 class="text-center m-2">Michele Baily</h5>
+      <span class="text-center">MASTER CHIEF</span>
+    </div>
+  </div>
+  <div class="col">
+    <div class="cardimg d-flex justify-content-center">
+      <img class=" rounded-circle" src="assets/images/teacher_03-400x400.jpg" alt="">
+    </div>
+    <div class="content d-flex flex-column">
+      <h5 class="text-center m-2">Philip Klein</h5>
+      <span class="text-center">COMPANY DIRECTOR</span>
+    </div>
+  </div>
+
+
+
+ </div>
+
+</section>
+
+<!-- teacher section ends -->
+
+<!-- activities section starts -->
+
+<section class="activities">
+
+  <h1 class="heading">our <span>activities</span></h1>
+
+    <div id="scene" class="scene position-absolute">
+      <div id="cloud" data-depth="0.5"><img src="assets/images/cloud.png"></div>
+      <div id="cubes" data-depth="0.5"><img src="assets/images/cubes.png"></div>
+
+    </div>
+
+  <div class="box-container row row-cols-1 row-cols-md-2 row-cols-lg-3 ">
+
+
+
+   <div class="col py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="mainc">
+      <div id="img1" class="img">
+        <div class="layer">
+          <img src="assets/images/footprint (1).png" alt="">
+        </div>
+      </div>
+    </div>
+    <h5>Studying</h5>
+   </div>
+   <div class="col py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="mainc">
+      <div id="img2" class="img">
+        <div class="layer">
+          <img src="assets/images/footprint (1).png" alt="">
+        </div>
+      </div>
+    </div>
+    <h5>Playing Football</h5>
+   </div>
+   <div class="col py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="mainc">
+      <div id="img3" class="img">
+        <div class="layer">
+          <img src="assets/images/footprint (1).png" alt="">
+        </div>
+      </div>
+    </div>
+    <h5>Doing Experments</h5>
+   </div>
+   <div class="col py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="mainc">
+      <div id="img4" class="img">
+        <div class="layer">
+          <img src="assets/images/footprint (1).png" alt="">
+        </div>
+      </div>
+    </div><h5>Reading Books</h5>
+   </div>
+   <div class="col py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="mainc">
+      <div id="img5" class="img">
+        <div class="layer">
+          <img src="assets/images/footprint (1).png" alt="">
+        </div>
+      </div>
+    </div>
+    <h5>Having Party</h5>
+   </div>
+   <div class="col py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="mainc">
+      <div id="img6" class="img">
+        <div class="layer">
+          <img src="assets/images/footprint (1).png" alt="">
+        </div>
+      </div>
+    </div>
+    <h5>Creative Painting</h5>
+   </div>
+
+
+
+  </div>
+
+
+</section>
+
+<!-- activities section ends -->
+
+<!-- gallery section starts -->
+
+<section class="gallery" id="gallery">
+
+  <h1 class="heading">our <span>gallery</span></h1>
+
+  <div class="gallery-container">
+
+<owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide><div class="overflow-hidden"><img src="assets/images/gallery-1.jpg" alt=""></div></ng-template>
+  <ng-template carouselSlide><div class="overflow-hidden"><img src="assets/images/gallery-2.jpg" alt=""></div></ng-template>
+  <ng-template carouselSlide><div class="overflow-hidden"><img src="assets/images/gallery-3.jpg" alt=""></div></ng-template>
+  <ng-template carouselSlide><div class="overflow-hidden"><img src="assets/images/gallery-4.jpg" alt=""></div></ng-template>
+  <ng-template carouselSlide><div class="overflow-hidden"><img src="assets/images/gallery-5.jpg" alt=""></div></ng-template>
+  <ng-template carouselSlide><div class="overflow-hidden"><img src="assets/images/gallery-6.jpg" alt=""></div></ng-template>
+
+</owl-carousel-o>
+
+  </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- contact section starts -->
+
+<section class="contact" id="contact">
+
+  <h1 class="heading"> <span>contact</span> us</h1>
+
+  <div class="icons-container p-5">
+
+    <div class="row row-cols-1">
+      <div class="icons col p-5" data-aos="fade-left" data-aos-duration="2600">
+        <i class="fas fa-clock"></i>
+        <h3>opening hours :</h3>
+        <p>mon - thurs: 08:00 am to 12:30 pm</p>
+        <p>friday: 09:00 am to 12:00 pm</p>
+      </div>
+
+      <div class="icons col" data-aos="fade-right" data-aos-duration="2600">
+        <i class="fas fa-envelope"></i>
+        <h3>email</h3>
+        <p>ninjashub4@gmail.com</p>
+        <p>ninjashub4@gmail.com</p>
+      </div>
+
+      <div class="icons col" data-aos="fade-left" data-aos-duration="2600">
+        <i class="fas fa-phone"></i>
+        <h3>phone number</h3>
+        <p>+123-456-7890</p>
+        <p>+123-456-7890</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="image">
+      <img src="./assets/images/contact.gif" alt="">
+    </div>
+
+    <form action="">
+      <h3>get in touch</h3>
+      <div class="inputBox">
+        <input type="text" placeholder="your name">
+        <input type="email" placeholder="your email">
+      </div>
+      <div class="inputBox">
+        <input type="number" placeholder="your number">
+        <input type="text" placeholder="your subject">
+      </div>
+      <textarea placeholder="your message" cols="30" rows="10"></textarea>
+      <input type="submit" value="send message" class="btn">
+    </form>
+
+  </div>
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- footer section starts -->
+
+<section class="footer">
+
+  <div class="box-container">
+
+    <div class="box">
+      <h3> <i class="fas fa-school"></i> Kindergarten </h3>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo, unde</p>
+    </div>
+
+    <div class="box">
+      <h3>quick links</h3>
+      <a href="#"> <i class="fas fa-caret-right"></i> enroll now</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> parent portal</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> school calendar</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> lunch menu</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> school supply list</a>
+    </div>
+
+    <div class="box">
+      <h3>category</h3>
+      <a href="#"> <i class="fas fa-caret-right"></i> about us</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> academics</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> admissions</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> news & events</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> contact us</a>
+    </div>
+
+    <div class="box">
+      <h3>extra links</h3>
+      <a href="#"> <i class="fas fa-caret-right"></i> privacy policy</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> terms of use</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> site map</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> FAQs</a>
+      <a href="#"> <i class="fas fa-caret-right"></i> accessibility statement</a>
+    </div>
+
+  </div>
+
+  <div class="credit"> &copy; copyright @ 2023 by <span>ninjashub</span></div>
+
+</section>
+
+<!-- footer section ends -->
+

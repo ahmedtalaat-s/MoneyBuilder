@@ -1,0 +1,100 @@
+<div class="main">
+<div class="container right-panel-active" data-aos="zoom-out-up" data-aos-duration="2000">
+<!-- Sign Up -->
+<div class="container__form container--signup">
+  <form [formGroup]="signUpForm" class="form" id="form1" (ngSubmit)="handleSignUp(signUpForm)">
+    <h2 class="form__title">Sign Up</h2>
+    <h6 class="alert alert-danger" *ngIf="registerError">{{registerError}}</h6>
+    <div>
+      <input formControlName="userName" type="text" placeholder="User" class="input" />
+      <p *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.getError('required')" class="text-danger text-start">
+        username is required</p>
+      <p *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.getError('minlength')" class="text-danger text-start">
+        Enter more than 2 characters</p>
+    </div>
+    <div>
+      <input formControlName="email" type="email" placeholder="Email" class="input" />
+      <p *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.getError('required')" class="text-danger text-start">Email
+        is required</p>
+      <p class="text-danger" *ngIf="signUpForm.get('email')?.touched &&  signUpForm.get('email')?.getError('email')"
+        class="text-danger text-start">Enter Valid Email</p>
+    </div>
+    <div>
+      <input formControlName="password" type="password" placeholder="Password" class="input" />
+      <p class="p-0 m-0" *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.getError('required')"
+        class="text-danger text-start">Password is required</p>
+        <p class=""
+          *ngIf="signUpForm.get('password')?.touched && (signUpForm.get('password')?.getError('pattern') || signUpForm.get('password')?.touched && signUpForm.get('password')?.getError('minlength'))"
+          class="p-0 m-0 ms-5 text-danger text-start">
+          Password must contain at least one lowercase letter , one uppercase letter , on special character and enter at least
+          <strong>6</strong> characters</p>
+    </div>
+    <button *ngIf="!isloading" type="submit" class="btn" [disabled]="signUpForm.invalid">Sign Up</button>
+    <button *ngIf="isloading" type="submit" class="btn" disabled="true">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    </button>
+  </form>
+</div>
+
+<!-- Sign In -->
+<div class="container__form container--signin">
+  <form [formGroup]="logInForm" class="form" id="form2" (ngSubmit)="handleLogIn(logInForm)">
+    <h2 class="form__title">Sign In</h2>
+    <h6 class="alert alert-danger" *ngIf="logInError">incorrect user name or password</h6>
+    <div id="email">
+      <input formControlName="Email" type="email" placeholder="Email" class="input" />
+      <p class="p-0 m-0 ms-1"
+        *ngIf="logInForm.get('Email')?.touched && logInForm.get('Email')?.getError('required')"
+        class="text-danger text-start">Email is required</p>
+      <p class="p-0 m-0 ms-1" *ngIf="logInForm.get('Email')?.touched && logInForm.get('Email')?.getError('email')"
+        class="text-danger text-start">Enter Valid email</p>
+    </div>
+    <div>
+      <input formControlName="password" type="password" placeholder="Password" class="input" />
+      <p class="p-0 m-0 ms-1" *ngIf="logInForm.get('password')?.touched && logInForm.get('password')?.getError('required')"
+        class="text-danger text-start">
+        Password is required</p>
+      <p class="p-0 m-0 ms-4"
+        *ngIf="logInForm.get('password')?.touched && (logInForm.get('password')?.getError('pattern') || logInForm.get('password')?.touched && logInForm.get('password')?.getError('minlength'))"
+        class="text-danger text-start">
+        Password must contain at least one lowercase letter , one uppercase letter , on special character and enter at least
+        <strong>6</strong> characters
+      </p>
+    </div>
+    <a (click)="fogotPassword(logInForm.get('Email')?.value)" class="link">Forgot your password?</a>
+    <div class="alert alert-danger my-1" *ngIf="emailNotExists">Email dosen't Exist</div>
+    <button *ngIf="!isloading" type="submit" class="btn"  [disabled]="logInForm.invalid">Sign In</button>
+    <button *ngIf="isloading" type="submit" class="btn" disabled="true">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
+  </form>
+</div>
+
+<!-- Overlay -->
+<div class="container__overlay">
+  <div class="overlay">
+    <div class="overlay__panel overlay--left">
+      <button (click)="toggle()" class="btn" id="signIn">Sign In</button>
+    </div>
+    <div class="overlay__panel overlay--right">
+      <button (click)="toggle()" class="btn" id="signUp">Sign Up</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div  class="signbox">
+<i class="fa-solid fa-circle-check" style="color: #00cc00;"></i><span> Sign up success</span>
+</div>
+
+</div>

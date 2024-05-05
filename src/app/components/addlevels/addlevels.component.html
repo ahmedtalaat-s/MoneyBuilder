@@ -1,0 +1,160 @@
+<div class="container">
+  <h2>Add Levels</h2>
+  <div class="box">
+    <p class="starting" dir="ltr">Start putting together your Content by creating Levels, lectures and Quizes</p>
+
+<!-- display levels -->
+<div class="container">
+  <div *ngFor="let level of levels" class=" boxlevel my-4 position-relative">
+    <div class="position-absolute levels">
+      <a (click)="getupdatelevel(level)"><i class="fa-solid fa-pen-to-square edit"></i></a>
+      <a (click)="deletelevel(level.id)"><i class="fa-solid fa-trash delete"></i></a>
+    </div>
+  <h4 class="fs-2 fw-semibold">{{level.title}}</h4>
+  <p><span>الأهداف:</span> {{level.objectives}}</p>
+
+  <!-- display lectures -->
+  <div *ngFor="let lecture of level.lectures"  class=" boxlevel my-4 position-relative">
+
+    <div class="position-absolute levels">
+      <a (click)="getupdatelecture(lecture,level.id)"><i class="fa-solid fa-pen-to-square edit"></i></a>
+      <a (click)="deletelecture(lecture.id)"><i class="fa-solid fa-trash delete"></i></a>
+    </div>
+    <h4>{{lecture.title}}</h4>
+    <p><span>الشرح:</span> {{lecture.description}}</p>
+
+    <!-- display question -->
+    <span *ngIf="lecture.id==parentLecturelId">
+      <div *ngFor="let question of questions"  class=" boxlevel my-4 position-relative">
+      <div class="position-absolute levels">
+        <a (click)="getupdateQuestion(question,lecture.id)"><i class="fa-solid fa-pen-to-square edit"></i></a>
+        <a (click)="deleteQuestion(question.id,lecture.id)"><i class="fa-solid fa-trash delete"></i></a>
+      </div>
+
+      <h4 style="
+    width: 90%;
+">السؤال :<strong>{{question.description}} ؟</strong>  </h4>
+      <p class="position-relative" *ngFor="let answer of question.answers"><span>الإختيار:</span> {{answer.description}} <span *ngIf="answer.isRight" class="text-success"> صحيح</span> <span *ngIf="!answer.isRight" (click)="deleteAnswer(answer.id,lecture.id)" class="x-mark position-absolute"><i *ngIf="question.answers.length>2" class="fa-solid fa-x"></i></span></p>
+      </div>
+    </span>
+
+    <!-- display question -->
+
+    <button *ngIf="!addingQuestion && !updatingQuestion" (click)="AddingQuestion(lecture.id)" class="btn btn-primary"><i
+        class="fa-solid fa-plus"></i> سؤال</button>
+    <button *ngIf="!addingQuestion && !updatingQuestion" (click)="getQuestions(lecture.id)" class="btn btn-primary m-2">عرض الأسئلة</button>
+      <form dir="ltr" *ngIf="(addingQuestion&&lecture.id==parentLecturelId) || (updatingQuestion&&lecture.id==parentLecturelId)"
+        [formGroup]="AddQuestionForm" class=" quize w-75 mx-auto my-4">
+
+        <label for="questionText">Question:</label>
+        <input formControlName="description" type="text" id="questionText" name="questionText" >
+        <p class="m-2 text-danger w-100 fs-5"
+          *ngIf="AddQuestionForm.get('description')?.touched && AddQuestionForm.get('description')?.getError('required')">
+          **Question description is required</p>
+        <br><br>
+
+        <label for="option1">Option 1:</label>
+        <input formControlName="correctAnswer" type="radio" id="option1" name="correctAnswer" value="option1" >
+        <input formControlName="option1" type="text" id="option1Text" name="option1" >
+        <textarea class="form-control my-2 mx-auto" id="option1Explanation" formControlName="explaination1" rows="2" cols="30"
+          placeholder="Explanation for Option 1"></textarea>
+        <p class="m-2 text-danger w-100 fs-5"
+          *ngIf="AddQuestionForm.get('option1')?.touched && AddQuestionForm.get('option1')?.getError('required')">
+          **First option is required</p>
+        <br><br>
+
+        <label for="option2">Option 2:</label>
+        <input formControlName="correctAnswer" type="radio" id="option2" name="correctAnswer" value="option2" >
+        <input formControlName="option2" type="text" id="option2Text" name="option2" >
+        <textarea class="form-control my-2 mx-auto"  id="option2Explanation" formControlName="explaination2" rows="2" cols="30"
+          placeholder="Explanation for Option 2"></textarea>
+        <p class="m-2 text-danger w-100 fs-5"
+          *ngIf="AddQuestionForm.get('option2')?.touched && AddQuestionForm.get('option2')?.getError('required')">
+          **Second option is required</p>
+        <br><br>
+
+        <label for="option3">Option 3:</label>
+        <input formControlName="correctAnswer" type="radio" id="option3" name="correctAnswer" value="option3" >
+        <input formControlName="option3" type="text" id="option3Text" name="option3" >
+        <textarea class="form-control my-2 mx-auto" id="option3Explanation" formControlName="explaination3" rows="2" cols="30"
+          placeholder="Explanation for Option 3"></textarea>
+        <br><br>
+
+        <label for="option4">Option 4:</label>
+        <input formControlName="correctAnswer" type="radio" id="option4" name="correctAnswer" value="option4" >
+        <input formControlName="option4" type="text" id="option4Text" name="option4" >
+        <textarea class="form-control my-2 mx-auto" id="option4Explanation" formControlName="explaination4" rows="2" cols="30"
+          placeholder="Explanation for Option 4"></textarea>
+        <br><br>
+
+        <input type="hidden" id="correctAnswer" name="correctAnswer" value="option1">
+
+        <button *ngIf="addingQuestion" (click)="addQuestion()" [disabled]="AddQuestionForm.invalid"
+          class="btn btn-primary d-block ms-auto">Save</button>
+        <button *ngIf="updatingQuestion" (click)="updateQuestion()" [disabled]="AddQuestionForm.invalid"
+          class="btn btn-primary d-block ms-auto">Save</button>
+      </form>
+  </div>
+  <!-- display lectures -->
+
+  <button *ngIf="!addinglecture && !updatinglecture" (click)="Addinglecture(level.id)" class="btn btn-primary"><i class="fa-solid fa-plus"></i> درس</button>
+  <form dir="ltr" *ngIf="(addinglecture&&level.id==parentLevelId) || (updatinglecture&&level.id==parentLevelId)" [formGroup]="AddLectureForm" class="w-75 mx-auto my-4">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Title </span>
+      <input formControlName="title" type="text" class="form-control " placeholder="Enter Title Here..."
+        aria-label="Username" aria-describedby="basic-addon1">
+      <p class="m-2 text-danger w-100 fs-5"
+        *ngIf="AddLectureForm.get('title')?.touched && AddLectureForm.get('title')?.getError('required')">
+        **Title is required</p>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Description</span>
+      <textarea formControlName="description" class="form-control" aria-label="With textarea"></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupFile01">Upload Video</label>
+      <input formControlName="videofile" (change)="onuploadVideo($event)" type="file" class="form-control w-75"
+        id="inputGroupFile01">
+      <p class="m-2 text-danger w-100 fs-5 "
+        *ngIf="AddLectureForm.get('videofile')?.touched  && AddLectureForm.get('videofile')?.getError('required')">
+        **Video is required</p>
+
+
+    </div>
+    <button *ngIf="addinglecture" (click)="addLecture()" [disabled]="AddLectureForm.invalid"
+      class="btn btn-primary d-block ms-auto">Save</button>
+    <button *ngIf="updatinglecture" (click)="updateLecture()" [disabled]="AddLectureForm.invalid"
+      class="btn btn-primary d-block ms-auto">Save</button>
+  </form>
+</div>
+</div>
+
+<!-- display levels -->
+
+
+    <button *ngIf="!addinglevel && !updatinglevel" (click)="Addinglevel()" class="btn btn-primary"><i class="fa-solid fa-plus"></i> مستوي</button>
+    <form dir="ltr" *ngIf="addinglevel || updatinglevel" [formGroup]="AddLevelForm" class="w-75 mx-auto my-4">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Title </span>
+      <input formControlName="title" type="text" class="form-control " placeholder="Enter Title Here..." aria-label="Username" aria-describedby="basic-addon1">
+      <p class="m-2 text-danger w-100 fs-5" *ngIf="AddLevelForm.get('title')?.touched && AddLevelForm.get('title')?.getError('required')">
+      **Title is required</p>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Objectives</span>
+      <textarea formControlName="objectives" class="form-control" aria-label="With textarea"></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupFile01">Upload Picture</label>
+      <input formControlName="imgfile" (change)="onuploadImg($event)" type="file" class="form-control w-75" id="inputGroupFile01">
+      <p class="m-2 text-danger w-100 fs-5"
+        *ngIf="AddLevelForm.get('imgfile')?.touched  && AddLevelForm.get('imgfile')?.getError('required')">
+        **Picture is required</p>
+        <div *ngIf="imgUrl && !AddLevelForm.get('imgfile')?.getError('required')"  class="w-25 h-25 m-3"><img [src]="imgUrl" alt="Selected Image" class="img-thumbnail"></div>
+
+    </div>
+    <button *ngIf="addinglevel" (click)="addlevel()" [disabled]="AddLevelForm.invalid"  class="btn btn-primary d-block ms-auto">Save</button>
+    <button *ngIf="updatinglevel" (click)="updatelevel()" [disabled]="AddLevelForm.invalid"  class="btn btn-primary d-block ms-auto">Save</button>
+  </form>
+  </div>
+</div>

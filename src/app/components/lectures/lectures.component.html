@@ -1,0 +1,25 @@
+<div dir="rtl" class="container">
+  <h2>{{level.title}}</h2>
+  <p><strong>الأهداف:</strong> {{level.objectives}}</p>
+  <div class="box-container d-flex w-100 justify-content-center flex-wrap">
+
+    <div *ngFor="let lecture of level.lectures ; let i=index;" class="w-25 m-5">
+      <div id="{{level.lectures?.id}}" lecture="1" class="lesson w-100  rounded-4 overflow-hidden  position-relative">
+      <img class="lessonImg" src="{{imgs[currentimg+i]}}" alt="">
+        <div id="12" *ngIf="(openedlectureId<lecture.id || currentLevel<levelId)" class="layer d-flex justify-content-center align-items-center">
+          <img class="lockedimg" src="assets/images/padlock.png" alt="">
+        </div>
+        <div (click)="playsound($event,lecture.id)" class="click"></div>
+      <button *ngIf="!(openedlectureId<lecture.id || currentLevel<levelId)" (click)="playsound($event,lecture.id)" class="btn lessonbtn">إلي الدرس</button>
+
+      </div>
+      <h3>{{level.lectures[i]?.title}}</h3>
+    </div>
+
+
+
+
+
+  </div>
+
+</div>
