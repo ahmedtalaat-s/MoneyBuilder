@@ -26,8 +26,12 @@
         <p class=""
           *ngIf="signUpForm.get('password')?.touched && (signUpForm.get('password')?.getError('pattern') || signUpForm.get('password')?.touched && signUpForm.get('password')?.getError('minlength'))"
           class="p-0 m-0 ms-5 text-danger text-start">
-          Password must contain at least one lowercase letter , one uppercase letter , on special character and enter at least
-          <strong>6</strong> characters</p>
+        <span class="d-block">Password must contain at least</span>
+        <span class="d-block">*one lowercase letter</span>
+        <span class="d-block">*one uppercase letter</span>
+        <span class="d-block">*one special character</span>
+        <span class="d-block">*one number</span>
+        <span class="d-block">*enter at least <strong>6</strong> characters</span></p>
     </div>
     <button *ngIf="!isloading" type="submit" class="btn" [disabled]="signUpForm.invalid">Sign Up</button>
     <button *ngIf="isloading" type="submit" class="btn" disabled="true">
@@ -62,11 +66,14 @@
       <p class="p-0 m-0 ms-4"
         *ngIf="logInForm.get('password')?.touched && (logInForm.get('password')?.getError('pattern') || logInForm.get('password')?.touched && logInForm.get('password')?.getError('minlength'))"
         class="text-danger text-start">
-        Password must contain at least one lowercase letter , one uppercase letter , on special character and enter at least
-        <strong>6</strong> characters
+        <span class="d-block">Password must contain at least</span>
+        <span class="d-block">*one lowercase letter</span>
+        <span class="d-block">*one uppercase letter</span>
+        <span class="d-block">*one special character</span>
+        <span class="d-block">*one number</span>
+        <span class="d-block">*enter at least <strong>6</strong> characters</span>
       </p>
     </div>
-    <a (click)="fogotPassword(logInForm.get('Email')?.value)" class="link">Forgot your password?</a>
     <div class="alert alert-danger my-1" *ngIf="emailNotExists">Email dosen't Exist</div>
     <button *ngIf="!isloading" type="submit" class="btn"  [disabled]="logInForm.invalid">Sign In</button>
     <button *ngIf="isloading" type="submit" class="btn" disabled="true">

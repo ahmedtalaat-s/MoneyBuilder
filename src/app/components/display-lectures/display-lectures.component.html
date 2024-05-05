@@ -27,7 +27,7 @@
       </video>
     </div>
     <div><p><strong>الشرح:</strong><br>  <span>{{lecture.description}}</span></p>
-    <div *ngIf="!startQuize" (click)="StartQuize()" class="w-100 py-3"><button class="btn btn-primary d-block m-auto startquizbtn">Start Quiz</button></div>
+    <div *ngIf="!startQuize" (click)="StartQuize()" class="w-100 py-3"><button class="btn btn-primary d-block m-auto startquizbtn">إبدأ الإختبار</button></div>
     </div>
     <div *ngIf="startQuize" class="py-5">
       <div class="quiz-container">
@@ -44,8 +44,8 @@
             <span>{{explaination[i]??''}}</span>
           </div>
         </div>
-        <button class="btn btn-primary" *ngIf="!isSubmit" [disabled]="disablebtn()" (click)="submitAnswer()">Submit Answer</button>
-        <button class="btn btn-primary" *ngIf="isSubmit"  (click)="EndQuiz()" data-bs-toggle="modal" data-bs-target="#exampleModal">End Quiz</button>
+        <button class="btn btn-primary" *ngIf="!isSubmit" [disabled]="disablebtn()" (click)="submitAnswer()">إنهاء الإختبار</button>
+        <button class="btn btn-primary" *ngIf="isSubmit"  (click)="EndQuiz()" data-bs-toggle="modal" data-bs-target="#exampleModal">عرض النتيجة</button>
       </div>
 
     </div>
@@ -75,8 +75,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button *ngIf="!passed" (click)="retryQuiz()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retry Quiz</button>
-        <button *ngIf="passed" data-bs-dismiss="modal" aria-label="Close" (click)="proceedNextLecture()" type="button" class="btn btn-primary">Next Lecture</button>
+        <button *ngIf="!passed" (click)="retryQuiz()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">إعادة الإختبار</button>
+        <button *ngIf="passed" data-bs-dismiss="modal" aria-label="Close" (click)="proceedNextLecture()" type="button" class="btn btn-primary">المحاضر التالية</button>
       </div>
     </div>
   </div>

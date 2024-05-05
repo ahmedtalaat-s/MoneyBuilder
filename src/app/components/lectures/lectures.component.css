@@ -185,3 +185,22 @@ p strong{
   top: 70%;
 }
 
+.homebtn{
+  top: 15%;
+  left: 0%;
+  padding:20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: none;
+  background-color: var(--bluemain);
+}
+.homebtn:hover{
+  background-color: #1fb0ea;
+}
+.homebtn img{
+
+    height: 40px;
+}

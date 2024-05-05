@@ -1,4 +1,7 @@
-<div dir="rtl" class="container">
+<div dir="rtl" class="container position-relative">
+  <button class="homebtn position-absolute d-flex">
+    <img class="w-100 " (click)="navigateHome()" src="assets/images/homeimg.png" alt="">
+  </button>
   <h2>{{level.title}}</h2>
   <p><strong>الأهداف:</strong> {{level.objectives}}</p>
   <div class="box-container d-flex w-100 justify-content-center flex-wrap">

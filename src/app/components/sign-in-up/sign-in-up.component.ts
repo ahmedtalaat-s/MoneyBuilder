@@ -31,14 +31,14 @@ export class SignInUpComponent {
 
       userName:['', [Validators.required, Validators.minLength(3)]],
       email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).*/)]]
+      password:['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!\@#$%^&*_\-+=|\[\]{};:'"\?><,\/.?])/)]]
     });
   }
 
   createLogInForm() {
     this.logInForm = this._fb.group({
       Email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)*/)]],
+      password:['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!\@#$%^&*_\-+=|\[\]{};:'"\?><,\/.?])/)]],
     });
   }
 

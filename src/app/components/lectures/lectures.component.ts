@@ -71,6 +71,10 @@ export class LecturesComponent implements OnInit {
 
   }
 })
-}
+  }
+
+  navigateHome() {
+    this._Router.navigate([''])
+  }
 
 }
