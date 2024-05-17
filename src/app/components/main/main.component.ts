@@ -48,8 +48,7 @@ export class MainComponent implements OnInit{
     offset: 0,
       });
 
-      var scene = document.getElementById('scene') as HTMLElement;
-    var parallax = new Parallax(scene);
+
 
     this.getLevels();
 
